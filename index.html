@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Fati ✨</title>
+    <style>
+        /* Estilos Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: linear-gradient(to bottom, 
+                #fad0c4 0%, 
+                #fbc2eb 25%, 
+                #fdfbfb 50%, 
+                #ffffff 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- SECCIÓN 1: PORTADA --- */
+        .hero-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            padding: 50px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            max-width: 450px;
+        }
+
+        h1 { color: white; font-size: 2.5rem; margin-bottom: 15px; text-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        .intro-text { color: #ffffff; font-size: 1.1rem; font-weight: 500; }
+
+        .scroll-arrow {
+            font-size: 3rem;
+            color: white;
+            text-decoration: none;
+            animation: bounce 2s infinite;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.1));
+            cursor: pointer;
+        }
+
+        .arrow-down-main { position: absolute; bottom: 40px; }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-15px);}
+            60% {transform: translateY(-8px);}
+        }
+
+        /* --- SECCIÓN 2: LA CARTA --- */
+        .letter-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .letter-paper {
+            background: #ffffff;
+            width: 100%;
+            max-width: 650px;
+            padding: 60px;
+            border-radius: 20px;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.05);
+            z-index: 2;
+        }
+
+        .letter-header { text-align: right; margin-bottom: 35px; font-style: italic; color: #ff9a9e; }
+        .letter-content { color: #4a4a4a; line-height: 1.9; font-size: 1.15rem; text-align: justify; }
+
+        /* --- SECCIÓN 3: CANCIONES --- */
+        .songs-section {
+            min-height: 100vh;
+            padding: 100px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .songs-title { color: #ff9a9e; margin-bottom: 10px; font-size: 2.2rem; }
+        
+        .songs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            max-width: 950px;
+            width: 100%;
+            margin-top: 30px;
+        }
+
+        .song-card {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fbc2eb 100%);
+            padding: 25px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            transition: 0.4s ease;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(255, 154, 158, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .song-card:hover { 
+            transform: translateY(-5px) scale(1.02); 
+            box-shadow: 0 15px 30px rgba(255, 154, 158, 0.4);
+        }
+
+        .song-card h3 { 
+            color: #ffffff; 
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            margin-bottom: 2px;
+        }
+
+        .song-card p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.9rem;
+        }
+
+        .song-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            margin-right: 20px;
+        }
+
+        /* --- SECCIÓN 4: EL SOBRE PS5 --- */
+        .envelope-section {
+            min-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 50px 20px;
+        }
+
+        .envelope-container {
+            position: relative;
+            width: 300px;
+            height: 200px;
+            cursor: pointer;
+        }
+
+        .envelope-wrapper {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #ff9a9e;
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            z-index: 3;
+        }
+
+        .flap {
+            position: absolute;
+            top: 0;
+            width: 0;
+            height: 0;
+            border-left: 150px solid transparent;
+            border-right: 150px solid transparent;
+            border-top: 110px solid #ff868b;
+            transform-origin: top;
+            transition: transform 0.6s ease;
+            z-index: 5;
+        }
+
+        .ps5-letter {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            width: 280px;
+            height: 180px;
+            background: white;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.7s ease;
+            z-index: 2;
+        }
+
+        .ps5-letter p {
+            color: #ff767b;
+            font-weight: bold;
+            font-size: 1.3rem;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .envelope-container.open .flap {
+            transform: rotateX(180deg);
+            z-index: 1;
+        }
+
+        .envelope-container.open .ps5-letter {
+            transform: translateY(-130px);
+        }
+
+        .envelope-container.open .ps5-letter p {
+            opacity: 1;
+        }
+
+        /* --- SECCIÓN 5: DESPEDIDA FINAL --- */
+        .final-message {
+            min-height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 80px 20px;
+        }
+
+        .closing-card {
+            background: rgba(255, 154, 158, 0.15);
+            backdrop-filter: blur(10px);
+            border: 2px dashed #ff9a9e;
+            border-radius: 30px;
+            padding: 40px;
+            text-align: center;
+            max-width: 500px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .closing-card p {
+            color: #ff767b;
+            font-size: 1.4rem;
+            line-height: 1.6;
+            font-weight: 600;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #ff9a9e;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero-section">
+        <div class="glass-card">
+            <h1>Desliza loca</h1>
+            <p class="intro-text">Desliza dale.</p>
+        </div>
+        <a href="#carta" class="scroll-arrow arrow-down-main">↓</a>
+    </section>
+
+    <section id="carta" class="letter-section">
+        <div class="letter-paper">
+            <div class="letter-header">Sábado, 14 de Febrero.</div>
+            <div class="letter-content">
+                <p>Hola Fati,</p>
+                <br>
+                <p>Te hago esto para que veas que por más tiempo que tenga sin darte detalles acá tengo uno más para ti. <strong>Te quiero decir que gracias por todo lo lindo que has hecho por mí y por durar casi dos años conmigo sabiendo que soy muy complicado</strong>.</p>
+                <p>Quiero decirte también que te amo mucho y te quiero como amiga, mejor amiga, confidente, novia, esposa... te quiero de todas las formas y te amo por igual.</p>
+                <br>
+                <p>Espero te guste mucho. <strong>Te amo y te quiero</strong>.</p>
+                <br>
+                <p>Atentamente,<br><strong>M</strong></p>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#canciones" style="color: #ff9a9e; font-size: 2rem; text-decoration: none;">↓</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="canciones" class="songs-section">
+        <h2 class="songs-title">Nuestra Playlist</h2>
+        <div class="songs-container">
+            <a href="https://www.youtube.com/watch?v=r18m230QaMY&t=41s" target="_blank" style="text-decoration:none">
+                <div class="song-card">
+                    <div class="song-icon">▶</div>
+                    <div><h3>Un deseo?</h3><p>Mora</p></div>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=xIhbWrzvxoI" target="_blank" style="text-decoration:none">
+                <div class="song-card">
+                    <div class="song-icon">▶</div>
+                    <div><h3>Martini</h3><p>Rauw</p></div>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=t9HOGGTqMOk" target="_blank" style="text-decoration:none">
+                <div class="song-card">
+                    <div class="song-icon">▶</div>
+                    <div><h3>Corone?</h3><p>Feid</p></div>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/watch?v=J7Sc8zl99_s" target="_blank" style="text-decoration:none">
+                <div class="song-card">
+                    <div class="song-icon">▶</div>
+                    <div><h3>ZzZzZ</h3><p>Rauw</p></div>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="envelope-section">
+        <h2 style="color: #ff9a9e; margin-bottom: 60px;">Un último deseo...</h2>
+        <div class="envelope-container" onclick="this.classList.toggle('open')">
+            <div class="flap"></div>
+            <div class="envelope-wrapper"></div>
+            <div class="ps5-letter">
+                <p>¿Y si me das mi PS5? porfis porfis con tl</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="final-message">
+        <div class="closing-card">
+            <p>Espero te haya gustado, no es mucho pero es más bonito que la última vez jeje... <br><br> Te amo locota ❤️</p>
+        </div>
+    </section>
+
+    <footer>
+        F + M ✨ 2024 - 2026
+    </footer>
+
+</body>
+</html>
